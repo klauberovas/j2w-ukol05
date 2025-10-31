@@ -29,6 +29,6 @@ public class RegistraceController {
           return "formular";
       }
 
-    return new ModelAndView("/registrace");
+    return new ModelAndView("rekapitulace");
   }
 }
