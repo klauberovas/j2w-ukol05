@@ -1,6 +1,5 @@
 package cz.czechitas.java2webapps.ukol5.controller;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,7 +13,7 @@ public class RegistraceForm {
      private String prijmeni;
 
     @NotNull
-     private LocalDate datum;
+     private LocalDate datumNarozeni;
 
     @NotNull
      private Pohlavi pohlavi;
@@ -58,12 +57,12 @@ public class RegistraceForm {
         this.pohlavi = pohlavi;
     }
 
-    public LocalDate getDatum() {
-        return datum;
+    public LocalDate getDatumNarozeni() {
+        return datumNarozeni;
     }
 
-    public void setDatum(LocalDate datum) {
-        this.datum = datum;
+    public void setDatumNarozeni(LocalDate datumNarozeni) {
+        this.datumNarozeni = datumNarozeni;
     }
 
     public String getPrijmeni() {
