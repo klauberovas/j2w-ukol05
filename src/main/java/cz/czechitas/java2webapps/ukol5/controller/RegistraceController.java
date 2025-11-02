@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 /**
  * Kontroler obsluhující registraci účastníků dětského tábora.
  */
@@ -24,11 +27,17 @@ public class RegistraceController {
   @PostMapping("")
     public Object form(@Valid @ModelAttribute("form") RegistraceForm form, BindingResult bindingResult) {
 
+      Period period = form.getDatumNarozeni().until(LocalDate.now());
+      int vek = period.getYears();
+
+      if(vek < 9 || vek > 15){
+        bindingResult.rejectValue("datumNarozeni", "error.datumNarozeni", "Registrace na tábor je pro děti od 9 do 15 let.");
+      }
 
       if (bindingResult.hasErrors()) {
           return "formular";
       }
 
-    return new ModelAndView("rekapitulace");
+    return new ModelAndView("rekapitulace").addObject("form",  form);
   }
 }
