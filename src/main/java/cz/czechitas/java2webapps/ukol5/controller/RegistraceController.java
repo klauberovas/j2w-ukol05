@@ -24,11 +24,10 @@ public class RegistraceController {
     return modelAndView;
   }
 
-  @PostMapping("")
+  @PostMapping("/")
     public Object form(@Valid @ModelAttribute("form") RegistraceForm form, BindingResult bindingResult) {
 
-      Period period = form.getDatumNarozeni().until(LocalDate.now());
-      int vek = period.getYears();
+      int vek = Period.between(form.getDatumNarozeni(), LocalDate.now()).getYears();
 
       if(vek < 9 || vek > 15){
         bindingResult.rejectValue("datumNarozeni", "error.datumNarozeni", "Registrace na tábor je pro děti od 9 do 15 let.");
