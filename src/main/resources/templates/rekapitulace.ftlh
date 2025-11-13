@@ -55,7 +55,7 @@
                 <dd class="col-sm-8">${form.email?has_content?then(form.email, '-')}</dd>
 
                 <dt class="col-sm-4">Telefon</dt>
-                <dd class="col-sm-8">${form.email?has_content?then(form.email, '-')}</dd>
+                <dd class="col-sm-8">${form.email?has_content?then(form.telefon, '-')}</dd>
             </dl>
 
             <div class="text-center mt-4">
